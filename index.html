@@ -270,7 +270,7 @@ h3 {
 
 /* --- Кейс / цитата --- */
 .case { display: grid; grid-template-columns: 360px 1fr; gap: clamp(32px, 4vw, 64px);
-  align-items: center; background: var(--c-graphite); border: 1px solid var(--c-line); padding: 60px 64px; }
+  align-items: center; background: var(--c-surface); border: 1px solid var(--c-line); padding: 60px 64px; }
 .case__photo { min-height: 420px; background-size: cover; background-position: center 22%; filter: grayscale(1) contrast(1.02); }
 .case__quote { font-family: var(--font-display); font-weight: var(--w-light);
   font-size: clamp(24px, 2.4vw, 33px); line-height: 1.42; text-transform: none; }
@@ -303,10 +303,13 @@ h3 {
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 100px); align-items: center; }
 .split--narrow { grid-template-columns: 0.85fr 1fr; }
 
-/* --- Светлый регистр (секция на слоновой кости, тёмный текст) --- */
+/* --- Светлый регистр (полная инверсия: слоновая кость + тёмный текст) ---
+   Вешается на секцию. Бронзовый акцент остаётся прежним - связь регистров. */
 .invert {
   background: var(--c-ivory-warm);
   color: var(--c-black);
+  --c-bg: var(--c-ivory-warm);     /* фон секции и плоских блоков */
+  --c-surface: #FCFAF5;            /* приподнятые карточки на светлом */
   --c-text: #0D0D0D;
   --c-muted: rgba(13, 13, 13, 0.62);
   --c-faint: rgba(13, 13, 13, 0.42);
@@ -314,6 +317,8 @@ h3 {
   --c-line-strong: rgba(13, 13, 13, 0.26);
 }
 .invert .logo__mono { border-color: #0D0D0D; }
+.invert .catbar { background: rgba(255, 255, 255, 0.55); }
+.invert .catbar__item { color: var(--c-text); }
 
 /* --- Программы (карточки услуг) --- */
 .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--c-line); border: 1px solid var(--c-line); }
@@ -345,7 +350,7 @@ h3 {
 
 /* Карточки и плитки - мягкий отклик на ховер */
 .card { transition: background var(--dur) var(--ease-lux); }
-.card:hover { background: var(--c-graphite); }
+.card:hover { background: var(--c-surface); }
 .catbar__item { transition: background var(--dur) var(--ease-lux), color var(--dur) var(--ease-lux); cursor: pointer; }
 .catbar__item:hover { background: rgba(191,158,119,0.10); color: var(--c-accent); }
 .nav__right span, .logo { transition: color var(--dur) var(--ease-lux); }
@@ -585,6 +590,26 @@ html:not(.js) .reveal { opacity: 1; }
     <div class="slide__in"><div class="eyebrow">Стратегическая сессия</div>
       <h2 class="display" style="font-size:clamp(36px,5vw,68px);margin-top:22px">Стратегия -<br>это маршрут</h2></div>
     <div class="slide__foot"><span>Александр Кандеев</span><span>01</span></div>
+  </div>
+</section>
+
+<!-- 09 ТЁМНОЕ + СВЕТЛОЕ -->
+<section class="section reveal">
+  <div class="sec-h"><div><div class="num">09</div><h2 class="display" style="font-size:clamp(28px,3vw,44px)">Тёмное и светлое</h2></div>
+    <p>База тёмная. Светлые блоки - для разбора, цен и чтения. Связывает один бронзовый акцент.</p></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+    <div style="padding:clamp(34px,4vw,56px) clamp(30px,3vw,48px);border:1px solid var(--c-line)">
+      <div class="eyebrow">Тёмный — удар</div>
+      <h3 style="margin:20px 0 14px">Hero, кейсы, CTA</h3>
+      <p class="muted" style="margin-bottom:28px">Тёмное весит больше, держит внимание, выглядит дороже. База языка.</p>
+      <a class="btn btn--solid btn--sm">Действие</a>
+    </div>
+    <div class="invert" style="padding:clamp(34px,4vw,56px) clamp(30px,3vw,48px);border:1px solid var(--c-line)">
+      <div class="eyebrow">Светлый — разбор</div>
+      <h3 style="margin:20px 0 14px">Метод, цены, текст</h3>
+      <p class="muted" style="margin-bottom:28px">Светлое читается легче. Тот же акцент и шрифт - меняется только фон.</p>
+      <a class="btn btn--solid btn--sm">Действие</a>
+    </div>
   </div>
 </section>
 
