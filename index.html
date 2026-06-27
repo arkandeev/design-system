@@ -335,6 +335,39 @@ h3 {
 .cta-screen__in { position: relative; z-index: 2; padding: 0 var(--gutter); max-width: 920px; }
 
 /* ============================================================
+   ПЛАШКИ, ТЕГИ, ВЫНОСКИ - цвет не только на кнопках
+   ============================================================ */
+
+/* Локальные «установщики акцента»: меняют --c-accent для вложенных
+   компонентов (бейдж, выноска, кнопка) + задают цвет текста ПОВЕРХ цвета. */
+.acc-bronze     { --c-accent: #BF9E77; --c-accent-hover: #997650; --on-accent: #0D0D0D; }
+.acc-clay       { --c-accent: #B98E7B; --c-accent-hover: #8E604C; --on-accent: #0D0D0D; }
+.acc-sage       { --c-accent: #9AAF89; --c-accent-hover: #728562; --on-accent: #13210E; }
+.acc-eucalyptus { --c-accent: #4D726B; --c-accent-hover: #354E49; --on-accent: #F4F1EC; }
+.acc-navy       { --c-accent: #0E3361; --c-accent-hover: #082344; --on-accent: #F4F1EC; }
+.acc-amber      { --c-accent: #EB9444; --c-accent-hover: #B5701F; --on-accent: #0D0D0D; }
+:root { --on-accent: #0D0D0D; }   /* текст поверх бронзы по умолчанию */
+
+/* Тег / бейдж - приглушённая плашка (заливка акцентом 14%, текст акцентом) */
+.badge { display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-display); font-weight: var(--w-medium); font-size: 12px;
+  letter-spacing: 0.12em; text-transform: uppercase; padding: 7px 14px; border-radius: 999px;
+  background: color-mix(in srgb, var(--c-accent) 15%, transparent); color: var(--c-accent); }
+.badge .pip { width: 7px; height: 7px; border-radius: 50%; background: var(--c-accent); }
+/* Сплошной бейдж - заливка цветом, текст поверх */
+.badge--solid { background: var(--c-accent); color: var(--on-accent); }
+
+/* Выноска / плашка-блок - тонкий бордер + акцентная грань слева + лёгкий тон */
+.callout { border: 1px solid var(--c-line); border-left: 3px solid var(--c-accent);
+  background: color-mix(in srgb, var(--c-accent) 7%, transparent);
+  padding: 24px 28px; }
+.callout__t { font-family: var(--font-display); font-weight: var(--w-medium); font-size: 13px;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--c-accent); margin-bottom: 10px; }
+
+/* Цветной разделитель-полоса (тонкая, для ритма/секций) */
+.rule-accent { height: 2px; width: 56px; background: var(--c-accent); border: 0; }
+
+/* ============================================================
    ВЗАИМОДЕЙСТВИЯ И ДВИЖЕНИЕ (снято с whitewill.ru)
    ============================================================ */
 
@@ -593,9 +626,57 @@ html:not(.js) .reveal { opacity: 1; }
   </div>
 </section>
 
-<!-- 09 ТЁМНОЕ + СВЕТЛОЕ -->
+<!-- 09 ЦВЕТ В ДЕЛЕ -->
 <section class="section reveal">
-  <div class="sec-h"><div><div class="num">09</div><h2 class="display" style="font-size:clamp(28px,3vw,44px)">Тёмное и светлое</h2></div>
+  <div class="sec-h"><div><div class="num">09</div><h2 class="display" style="font-size:clamp(28px,3vw,44px)">Цвет в деле</h2></div>
+    <p>Где какой цвет: фоны, теги, выноски, темы. Как палитра взаимодействует - не только на кнопках.</p></div>
+
+  <div class="kicker" style="margin-bottom:18px">Фоны — где используются</div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:48px">
+    <div style="min-height:160px;border:1px solid var(--c-line);padding:20px;display:flex;flex-direction:column;justify-content:flex-end;background:#0D0D0D"><b style="color:#F4F1EC;font-weight:500">Чёрный</b><span style="color:#F4F1EC;opacity:.6;font-size:12px;font-family:monospace">основной · #0D0D0D</span></div>
+    <div style="min-height:160px;border:1px solid var(--c-line);padding:20px;display:flex;flex-direction:column;justify-content:flex-end;background:#15191F"><b style="color:#F4F1EC;font-weight:500">Графит</b><span style="color:#F4F1EC;opacity:.6;font-size:12px;font-family:monospace">карточки · #15191F</span></div>
+    <div style="min-height:160px;border:1px solid var(--c-line);padding:20px;display:flex;flex-direction:column;justify-content:flex-end;background:#0C1B20"><b style="color:#F4F1EC;font-weight:500">Хвойный</b><span style="color:#F4F1EC;opacity:.6;font-size:12px;font-family:monospace">глубокая секция · #0C1B20</span></div>
+    <div style="min-height:160px;border:1px solid var(--c-line);padding:20px;display:flex;flex-direction:column;justify-content:flex-end;background:#F0EAE3"><b style="color:#0D0D0D;font-weight:500">Слоновая кость</b><span style="color:#0D0D0D;opacity:.6;font-size:12px;font-family:monospace">светлый блок · #F0EAE3</span></div>
+  </div>
+
+  <div class="kicker" style="margin-bottom:16px">Теги и бейджи</div>
+  <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:14px">
+    <span class="badge acc-bronze"><span class="pip"></span>Бронза</span>
+    <span class="badge acc-clay"><span class="pip"></span>Глина</span>
+    <span class="badge acc-sage"><span class="pip"></span>Шалфей</span>
+    <span class="badge acc-eucalyptus"><span class="pip"></span>Эвкалипт</span>
+    <span class="badge acc-navy"><span class="pip"></span>Навигатор</span>
+    <span class="badge acc-amber"><span class="pip"></span>Амбра</span>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:48px">
+    <span class="badge badge--solid acc-bronze">Бронза</span>
+    <span class="badge badge--solid acc-clay">Глина</span>
+    <span class="badge badge--solid acc-sage">Шалфей</span>
+    <span class="badge badge--solid acc-eucalyptus">Эвкалипт</span>
+    <span class="badge badge--solid acc-navy">Навигатор</span>
+    <span class="badge badge--solid acc-amber">Амбра</span>
+  </div>
+
+  <div class="kicker" style="margin-bottom:18px">Выноски — плашки с акцентной гранью</div>
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:48px">
+    <div class="callout acc-eucalyptus"><div class="callout__t">Стратегия</div><p class="muted">Эвкалипт - для стратегических разделов и тем.</p></div>
+    <div class="callout acc-sage"><div class="callout__t">Рост</div><p class="muted">Шалфей - там, где речь про развитие и динамику.</p></div>
+    <div class="callout acc-amber"><div class="callout__t">Внимание</div><p class="muted">Амбра - акцент на важном, очень дозированно.</p></div>
+    <div class="callout acc-bronze"><div class="callout__t">Премиум</div><p class="muted">Бронза - базовый акцент, статус и действие.</p></div>
+  </div>
+
+  <div class="kicker" style="margin-bottom:18px">Темы как блоки — один класс красит весь блок</div>
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px">
+    <div class="theme-bronze" style="border:1px solid var(--c-line);padding:34px 38px;background:var(--c-surface)"><div class="eyebrow">Бронза</div><h3 style="margin:16px 0 12px">Стратегическая сессия</h3><p class="muted" style="margin-bottom:22px">База. Тёплый премиум на графите.</p><div style="display:flex;gap:12px;align-items:center"><span class="badge"><span class="pip"></span>Базовая</span><a class="btn btn--solid btn--sm">Выбрать</a></div></div>
+    <div class="theme-sage" style="border:1px solid var(--c-line);padding:34px 38px;background:var(--c-surface)"><div class="eyebrow">Шалфей</div><h3 style="margin:16px 0 12px">Рост команды</h3><p class="muted" style="margin-bottom:22px">Спокойный зелёный регистр.</p><div style="display:flex;gap:12px;align-items:center"><span class="badge"><span class="pip"></span>Серия</span><a class="btn btn--solid btn--sm">Выбрать</a></div></div>
+    <div class="theme-emerald" style="border:1px solid var(--c-line);padding:34px 38px;background:var(--c-surface)"><div class="eyebrow">Изумруд</div><h3 style="margin:16px 0 12px">Динамика</h3><p class="muted" style="margin-bottom:22px">Глубокий эвкалипт на тёмно-зелёном.</p><div style="display:flex;gap:12px;align-items:center"><span class="badge"><span class="pip"></span>Поток</span><a class="btn btn--solid btn--sm">Выбрать</a></div></div>
+    <div class="invert acc-navy" style="border:1px solid var(--c-line);padding:34px 38px"><div class="eyebrow">Навигатор</div><h3 style="margin:16px 0 12px">Диагностика</h3><p class="muted" style="margin-bottom:22px">Тёмно-синий лучше на светлом - статусно и строго.</p><div style="display:flex;gap:12px;align-items:center"><span class="badge"><span class="pip"></span>Аудит</span><a class="btn btn--solid btn--sm">Выбрать</a></div></div>
+  </div>
+</section>
+
+<!-- 10 ТЁМНОЕ + СВЕТЛОЕ -->
+<section class="section reveal">
+  <div class="sec-h"><div><div class="num">10</div><h2 class="display" style="font-size:clamp(28px,3vw,44px)">Тёмное и светлое</h2></div>
     <p>База тёмная. Светлые блоки - для разбора, цен и чтения. Связывает один бронзовый акцент.</p></div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
     <div style="padding:clamp(34px,4vw,56px) clamp(30px,3vw,48px);border:1px solid var(--c-line)">
