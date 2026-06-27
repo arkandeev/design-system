@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Дизайн-система · Александр Кандеев</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/*__TOKENS__*/
+/*__BASE__*/
+
+/* ---- страница-паспорт ---- */
+.kicker { font-family: var(--font-display); font-weight: 500; font-size: 12px; letter-spacing: .26em;
+  text-transform: uppercase; color: var(--c-faint); }
+.sec-h { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px;
+  flex-wrap: wrap; margin-bottom: 56px; }
+.sec-h .num { font-family: var(--font-display); font-weight: 300; font-size: 13px; letter-spacing: .2em;
+  color: var(--c-accent); margin-bottom: 18px; }
+.sec-h p { color: var(--c-muted); max-width: 360px; }
+.sw-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
+.sw__c { height: 96px; border-radius: var(--radius-sm); border: 1px solid var(--c-line); }
+.sw__n { font-size: 13px; margin-top: 12px; }
+.sw__h { font-size: 12px; color: var(--c-muted); font-family: monospace; margin-top: 3px; }
+.chips { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; align-items: center; }
+.chip2 { display: flex; align-items: center; gap: 10px; padding: 10px 16px; border: 1px solid var(--c-line);
+  border-radius: 999px; font-size: 13px; }
+.chip2 i { width: 14px; height: 14px; border-radius: 50%; }
+.trow { display: grid; grid-template-columns: 210px 1fr; gap: 30px; align-items: baseline;
+  padding: 20px 0; border-bottom: 1px solid var(--c-line); }
+.tlab b { display: block; font-size: 14px; } .tlab span { display: block; font-size: 12px; color: var(--c-muted); margin-top: 4px; }
+.btn-grid { display: grid; grid-template-columns: 150px 1fr; gap: 26px 40px; align-items: center; }
+.cell { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.rlab b { display: block; font-size: 14px; } .rlab span { display: block; font-size: 12px; color: var(--c-muted); margin-top: 3px; }
+.imgs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.img { aspect-ratio: 1/1; background-size: cover; background-position: center; border: 1px solid var(--c-line); }
+.icap { font-size: 13px; margin-top: 12px; } .icap span { color: var(--c-muted); }
+.themes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.tcard { padding: 30px 26px; border: 1px solid var(--c-line); background: var(--c-surface); }
+.tcard h4 { font-family: var(--font-display); font-weight: 400; font-size: 19px; margin: 14px 0 20px; text-transform: uppercase; letter-spacing: .04em; }
+.block { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+.block__vis { aspect-ratio: 1/1; background-size: cover; background-position: center; }
+.slide { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; background: var(--c-black); border: 1px solid var(--c-line); }
+.slide__bg { position: absolute; inset: 0 0 0 42%; background-size: cover; background-position: center; }
+.slide__bg::after { content:""; position:absolute; inset:0; background: linear-gradient(90deg, #0D0D0D 8%, rgba(13,13,13,.3) 55%, transparent 100%); }
+.slide__nav { position: absolute; top: 34px; left: 42px; right: 42px; display: flex; justify-content: space-between; align-items: center; z-index: 3; }
+.slide__in { position: absolute; left: 42px; bottom: 64px; z-index: 3; max-width: 60%; }
+.slide__foot { position: absolute; left: 42px; right: 42px; bottom: 28px; z-index: 3; display: flex; justify-content: space-between; font-family: var(--font-display); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--c-faint); }
+.foot { padding: 70px var(--gutter); border-top: 1px solid var(--c-line); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; }
+.status-row { display: flex; gap: 14px; flex-wrap: wrap; }
+.pill { font-size: 12px; letter-spacing: .04em; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--c-line); color: var(--c-muted); }
+.pill--on { color: var(--c-sage); border-color: rgba(154,175,137,.4); }
+.pill--wait { color: var(--c-bronze); border-color: rgba(191,158,119,.4); }
+/* фолбэк: без JS появления-секции видны сразу */
+html:not(.js) .reveal { opacity: 1; }
+</style>
+<script>document.documentElement.className += ' js';</script>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero__bg" style="background-image:url('__IMG_HERO__')"></div>
+  <nav class="nav hero__nav">
+    <div class="logo"><div class="logo__mono">АК</div>
+      <div><div class="logo__name">Александр Кандеев</div><div class="logo__tag">Стратегические сессии</div></div></div>
+    <div class="nav__right"><span class="muted">Дизайн-система · 2026</span></div>
+  </nav>
+  <div class="hero__title">
+    <div class="eyebrow">Визуальный язык</div>
+    <h1 class="display" style="margin-top:26px">Дизайн-<br>система</h1>
+  </div>
+  <div class="hero__lede">
+    <p class="lede">Единый стиль для сайтов, лендингов, презентаций и документов. Премиум-тёмный: монохром, бронза, фотография и воздух.</p>
+  </div>
+</header>
+
+<!-- МАНИФЕСТ -->
+<section class="section reveal">
+  <div class="block" style="align-items:center">
+    <h2 class="display" style="font-size:clamp(28px,3vw,44px)">Дорого -<br>это сдержанность,<br>а не яркость</h2>
+    <div>
+      <p class="lede" style="margin-bottom:20px">Почти-чёрный фон, слоновая кость, один приглушённый акцент. Заголовки крупные и прописные, фотография несёт настроение, цвета почти нет.</p>
+      <p class="muted">Якорь стиля - whitewill.ru. Шрифты - Montserrat и Inter. Движение спокойное, на одном ритме.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 01 ЦВЕТ -->
+<section class="section reveal">
+  <div class="sec-h"><div><div class="num">01</div><h2 class="display" style="font-size:clamp(28px,3vw,44px)">Цвет</h2></div>
+    <p>Монохром первым. Цвет - редкость: один приглушённый акцент на экран.</p></div>
+  <div class="sw-grid">
+    <div><div class="sw__c" style="background:#0D0D0D"></div><div class="sw__n">Чёрный</div><div class="sw__h">#0D0D0D</div></div>
+    <div><div class="sw__c" style="background:#000A0D"></div><div class="sw__n">Почти-чёрный</div><div class="sw__h">#000A0D</div></div>
+    <div><div class="sw__c" style="background:#15191F"></div><div class="sw__n">Графит</div><div class="sw__h">#15191F</div></div>
+    <div><div class="sw__c" style="background:#0C1B20"></div><div class="sw__n">Хвойный</div><div class="sw__h">#0C1B20</div></div>
+    <div><div class="sw__c" style="background:#F4F1EC"></div><div class="sw__n">Слоновая кость</div><div class="sw__h">#F4F1EC</div></div>
+    <div><div class="sw__c" style="background:#F0EAE3"></div><div class="sw__n">Тёплый крем</div><div class="sw__h">#F0EAE3</div></div>
+  </div>
+  <div class="sw-grid" style="margin-top:22px">
+    <div><div class="sw__c" style="background:#BF9E77"></div><div class="sw__n">Бронза · акцент</div><div class="sw__h">#BF9E77</div></div>
+    <div><div class="sw__c" style="background:#997650"></div><div class="sw__n">Бронза глубже</div><div class="sw__h">#997650</div></div>
+    <div><div class="sw__c" style="background:#B98E7B"></div><div class="sw__n">Глина</div><div class="sw__h">#B98E7B</div></div>
+    <div><div class="sw__c" style="background:#9AAF89"></div><div class="sw__n">Шалфей</div><div class="sw__h">#9AAF89</div></div>
+    <div><div class="sw__c" style="background:#4D726B"></div><div class="sw__n">Эвкалипт</div><div class="sw__h">#4D726B</div></div>
+    <div><div class="sw__c" style="background:#0E3361"></div><div class="sw__n">Навигатор</div><div class="sw__h">#0E3361</div></div>
+  </div>
+  <div class="chips">
+    <span class="kicker" style="margin-right:6px">Темы</span>
+    <span class="chip2"><i style="background:#BF9E77"></i>bronze</span>
+    <span class="chip2"><i style="background:#4D726B"></i>emerald</span>
+    <span class="chip2"><i style="background:#9AAF89"></i>sage</span>
+    <span class="chip2"><i style="background:#0E3361"></i>navy</span>
+  </div>
+</section>
+
+<!-- 02 ТИПОГРАФИКА -->
+<section class="section reveal">
+  <div class="sec-h"><div><div class="num">02</div><h2 class="display" style="font-size:clamp(28px,3vw,44px)">Типографика</h2></div>
+    <p>Заголовки Montserrat прописными, текст Inter. Размер - главный инструмент иерархии.</p></div>
+  <div class="trow"><div class="tlab"><b>Заголовок H1</b><span>Montserrat 300 · прописные</span></div><div class="display" style="font-size:54px">Стратегия</div></div>
+  <div class="trow"><div class="tlab"><b>Заголовок H2</b><span>Montserrat 300 / 500</span></div><div class="display" style="font-size:36px">Как устроена сессия</div></div>
+  <div class="trow"><div class="tlab"><b>Заголовок H3</b><span>Montserrat 400</span></div><h3 style="margin:0">Стратегическая сессия</h3></div>
+  <div class="trow"><div class="tlab"><b>Лид</b><span>Inter 300</span></div><div class="lede" style="margin:0">Команды первого круга к плану роста, под которым стоят подписи.</div></div>
+  <div class="trow"><div class="tlab"><b>Текст</b><span>Inter 400 · 1.62</span></div><div style="margin:0;max-width:560px">Никаких игр ради игр. Только команда первого круга и только стратегия - то, что в понедельник идёт в работу.</div></div>
+  <div class="trow"><div class="tlab"><b>Подпись / навбар</b><span>Montserrat 500 · разрядка</span></div><div class="eyebrow" style="margin:0">Стратегические сессии</div></div>
+</section>
+
+<!-- 03 КНОПКИ -->
+<section class="section reveal">
+  <div class="sec-h"><div><div class="num">03</div><h2 class="display" style="font-size:clamp(28px,3vw,44px)">Кнопки</h2></div>
+    <p>Наведи курсор - кнопки живые: заливаются акцентом, стрелка дышит.</p></div>
+  <div class="btn-grid">
+    <div class="rlab"><b>Основная</b><span>главное действие</span></div>
+    <div class="cell"><a class="btn btn--solid">Обсудить сессию</a><a class="btn btn--solid btn--arrow">Оставить заявку <span class="arr">›</span></a></div>
+    <div class="rlab"><b>Призрак</b><span>вторичное</span></div>
+    <div class="cell"><a class="btn btn--ghost">Программа сессии</a><a class="link">Как проходит сессия</a></div>
+    <div class="rlab"><b>Размеры</b><span>sm · md · lg</span></div>
+    <div class="cell"><a class="btn btn--solid btn--sm">Записаться</a><a class="btn btn--solid">Записаться</a><a class="btn btn--solid btn--lg">Записаться</a></div>
+  </div>
+</section>
+
+<!-- 04 ФОРМЫ -->
+<section class="section reveal">
+  <div class="sec-h"><div><div class="num">04</div><h2 class="display" style="font-size:clamp(28px,3vw,44px)">Формы</h2></div>
+    <p>Кликни в поле - бордер загорается бронзой.</p></div>
+  <div style="max-width:520px">
+    <label class="field"><span class="field__label">Имя</span><input class="input" placeholder="Александр"></label>
+    <label class="field"><span class="field__label">Телефон</span><input class="input" placeholder="+7 495 000-00-00"></label>
+    <label class="field"><span class="field__label">Сообщение</span><textarea class="textarea" placeholder="Расскажите про команду и задачу"></textarea></label>
+    <button class="btn btn--solid btn--block">Отправить заявку</button>
+  </div>
+</section>
+
+<!-- 05 ИЗОБРАЖЕНИЯ -->
+<section class="section reveal">
+  <div class="sec-h"><div><div class="num">05</div><h2 class="display" style="font-size:clamp(28px,3vw,44px)">Изображения</h2></div>
+    <p>Рендеры под смысл блока, а не фото везде. Сгенерированы в стиле бренда.</p></div>
+  <div class="imgs">
+    <div><div class="img" style="background-image:url('__IMG_ROUTE__')"></div><div class="icap">Компас <span>· стратегия</span></div></div>
+    <div><div class="img" style="background-image:url('__IMG_SYSTEM__')"></div><div class="icap">Механизм <span>· система</span></div></div>
+    <div><div class="img" style="background-image:url('__IMG_MASTERY__')"></div><div class="icap">Бюст <span>· мастерство</span></div></div>
+    <div><div class="img" style="background-image:url('__IMG_GROWTH__')"></div><div class="icap">Дерево <span>· рост</span></div></div>
+  </div>
+</section>
+
+<!-- 06 ТЕМЫ -->
+<section class="section reveal">
+  <div class="sec-h"><div><div class="num">06</div><h2 class="display" style="font-size:clamp(28px,3vw,44px)">Темы</h2></div>
+    <p>Одна обёртка на секцию - акцент и тёмный тон меняются, всё следует.</p></div>
+  <div class="themes">
+    <div class="tcard theme-bronze"><div class="eyebrow">Бронза</div><h4>Сессия</h4><a class="btn btn--solid btn--sm">Выбрать</a></div>
+    <div class="tcard theme-emerald"><div class="eyebrow">Изумруд</div><h4>Динамика</h4><a class="btn btn--solid btn--sm">Выбрать</a></div>
+    <div class="tcard theme-sage"><div class="eyebrow">Шалфей</div><h4>Рост</h4><a class="btn btn--solid btn--sm">Выбрать</a></div>
+    <div class="tcard theme-navy"><div class="eyebrow">Навигатор</div><h4>Диагностика</h4><a class="btn btn--solid btn--sm">Выбрать</a></div>
+  </div>
+</section>
+
+<!-- 07 БЛОК В ДЕЛЕ -->
+<section class="section reveal">
+  <div class="sec-h"><div><div class="num">07</div><h2 class="display" style="font-size:clamp(28px,3vw,44px)">Блок в деле</h2></div>
+    <p>Текст и рендер, который его олицетворяет.</p></div>
+  <div class="block">
+    <div>
+      <div class="eyebrow">Принцип</div>
+      <h2 class="display" style="font-size:clamp(30px,3.4vw,52px);margin:24px 0 24px">Система,<br>а не вдохновение</h2>
+      <p class="lede" style="margin-bottom:34px">Команда уходит с сессии не с эмоцией, а с устройством: кто, что, когда и по какому правилу решает.</p>
+      <a class="btn btn--solid btn--arrow">Обсудить сессию <span class="arr">›</span></a>
+    </div>
+    <div class="block__vis" style="background-image:url('__IMG_SYSTEM__')"></div>
+  </div>
+</section>
+
+<!-- 08 СЛАЙД -->
+<section class="section reveal">
+  <div class="sec-h"><div><div class="num">08</div><h2 class="display" style="font-size:clamp(28px,3vw,44px)">Слайд презентации</h2></div>
+    <p>Тот же язык на обложке 16:9.</p></div>
+  <div class="slide">
+    <div class="slide__bg" style="background-image:url('__IMG_ROUTE__')"></div>
+    <div class="slide__nav">
+      <div class="logo"><div class="logo__mono">АК</div><div><div class="logo__name" style="font-size:14px">Александр Кандеев</div><div class="logo__tag">Стратегические сессии</div></div></div>
+      <div class="kicker">Стратегия роста · 2026</div>
+    </div>
+    <div class="slide__in"><div class="eyebrow">Стратегическая сессия</div>
+      <h2 class="display" style="font-size:clamp(36px,5vw,68px);margin-top:22px">Стратегия -<br>это маршрут</h2></div>
+    <div class="slide__foot"><span>Александр Кандеев</span><span>01</span></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="logo"><div class="logo__mono">АК</div><div><div class="logo__name">Александр Кандеев</div><div class="logo__tag">Дизайн-система · 2026</div></div></div>
+  <div class="status-row">
+    <span class="pill pill--on">Готово: цвет · шрифт · кнопки · формы · движение · изображения · темы</span>
+    <span class="pill pill--wait">Ждёт: логотип · Futura PT</span>
+  </div>
+</footer>
+
+<script>
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){
+    if (e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); }
+  }); }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
+</body>
+</html>

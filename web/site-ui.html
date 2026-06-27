@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Демо: кнопки, формы, ховеры, темы</title>
+<link rel="stylesheet" href="../core/tokens.css">
+<link rel="stylesheet" href="base.css">
+<style>
+  body { padding: 60px var(--gutter); }
+  .lab { font-family: var(--font-display); font-weight: 500; font-size: 11px; letter-spacing: .22em;
+    text-transform: uppercase; color: var(--c-faint); margin: 0 0 22px; }
+  .grp { padding: 40px 0; border-top: 1px solid var(--c-line); }
+  .row { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+  .col2 { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .cap { font-size: 12px; color: var(--c-muted); margin-bottom: 12px; letter-spacing: .04em; }
+  /* имитация :hover для статичного рендера */
+  .fh.btn--solid { background: var(--c-accent-hover); }
+  .fh.btn--ghost { background: var(--c-accent); color: var(--c-black); border-color: var(--c-accent); }
+  .fh.link { color: var(--c-accent); gap: 18px; }
+  .fh.link::after { width: 44px; }
+  .fh.input { border-color: var(--c-accent); background: rgba(191,158,119,.04); }
+  .fig { height: 230px; }
+</style>
+</head>
+<body>
+
+<div class="lab">Кнопки · слева обычные, справа наведение</div>
+<div class="grp" style="border:0;padding-top:0">
+  <div class="pair" style="max-width:760px">
+    <div><div class="cap">Обычное</div>
+      <div class="row">
+        <a class="btn btn--solid">Оставить заявку</a>
+        <a class="btn btn--ghost">Подробнее</a>
+      </div>
+      <div class="row" style="margin-top:18px">
+        <a class="btn btn--solid btn--arrow">Обсудить сессию <span class="arr">›</span></a>
+      </div>
+      <div class="row" style="margin-top:20px"><a class="link">Как проходит</a></div>
+    </div>
+    <div><div class="cap">Наведение (hover)</div>
+      <div class="row">
+        <a class="btn btn--solid fh">Оставить заявку</a>
+        <a class="btn btn--ghost fh">Подробнее</a>
+      </div>
+      <div class="row" style="margin-top:18px">
+        <a class="btn btn--solid btn--arrow fh">Обсудить сессию <span class="arr">›</span></a>
+      </div>
+      <div class="row" style="margin-top:20px"><a class="link fh">Как проходит</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="grp col2">
+  <div>
+    <div class="lab">Форма (фокус поля → бронза)</div>
+    <label class="field"><span class="field__label">Имя</span><input class="input" value="Александр"></label>
+    <label class="field"><span class="field__label">Телефон</span><input class="input fh" value="+7 495 000-00-00"></label>
+    <label class="field"><span class="field__label">Сообщение</span><textarea class="textarea" placeholder="Расскажите про команду и задачу"></textarea></label>
+    <button class="btn btn--solid" style="width:100%">Отправить</button>
+  </div>
+  <div>
+    <div class="lab">Фото: ч/б → цвет на ховере</div>
+    <div class="pair">
+      <div><div class="cap">Обычное</div>
+        <div class="figure figure--reveal fig" style="background-image:url('../brand/sample-photos/77.jpg')"></div></div>
+      <div><div class="cap">Наведение</div>
+        <div class="figure fig" style="background-image:url('../brand/sample-photos/77.jpg');transform:scale(1.02)"></div></div>
+    </div>
+    <div class="lab" style="margin-top:34px">Темы: одна обёртка - весь блок следует</div>
+    <div class="pair">
+      <div class="theme-bronze" style="padding:26px;border:1px solid var(--c-line)">
+        <div class="eyebrow">Бронза</div>
+        <h3 style="margin:14px 0 18px">Стратегическая сессия</h3>
+        <a class="btn btn--solid" style="font-size:11px;padding:13px 22px">Выбрать</a>
+      </div>
+      <div class="theme-emerald" style="padding:26px;border:1px solid var(--c-line);background:var(--c-surface)">
+        <div class="eyebrow">Изумруд</div>
+        <h3 style="margin:14px 0 18px">Динамика команды</h3>
+        <a class="btn btn--solid" style="font-size:11px;padding:13px 22px">Выбрать</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

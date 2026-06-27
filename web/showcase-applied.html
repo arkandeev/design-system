@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../core/tokens.css">
+<link rel="stylesheet" href="base.css">
+<style>
+  body { padding: 64px var(--gutter); }
+  .sec { padding: 46px 0; border-top: 1px solid var(--c-line); }
+  .sec:first-child { border-top: 0; padding-top: 0; }
+  .sec__t { font-family: var(--font-display); font-weight: 500; font-size: 12px; letter-spacing: .26em;
+    text-transform: uppercase; color: var(--c-faint); margin-bottom: 30px; }
+  .imgs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .img { aspect-ratio: 1/1; background-size: cover; background-position: center; border: 1px solid var(--c-line); }
+  .icap { font-size: 13px; margin-top: 12px; } .icap span { color: var(--c-muted); }
+  .block { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+  .block__vis { aspect-ratio: 1/1; background-size: cover; background-position: center; }
+  /* слайд презентации 16:9 */
+  .slide { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; background: var(--c-black); border: 1px solid var(--c-line); }
+  .slide__bg { position: absolute; inset: 0 0 0 42%; background-size: cover; background-position: center; }
+  .slide__bg::after { content:""; position:absolute; inset:0; background: linear-gradient(90deg, #0D0D0D 8%, rgba(13,13,13,.3) 55%, transparent 100%); }
+  .slide__nav { position: absolute; top: 36px; left: 44px; right: 44px; display: flex; justify-content: space-between; align-items: center; z-index: 3; }
+  .slide__in { position: absolute; left: 44px; bottom: 64px; z-index: 3; max-width: 60%; }
+  .slide__foot { position: absolute; left: 44px; right: 44px; bottom: 30px; z-index: 3; display: flex; justify-content: space-between; font-family: var(--font-display); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--c-faint); }
+</style>
+</head>
+<body>
+
+<!-- БИБЛИОТЕКА РЕНДЕРОВ -->
+<div class="sec">
+  <div class="sec__t">05 · Изображения (сгенерированы под смысл, kie.ai)</div>
+  <div class="imgs">
+    <div><div class="img" style="background-image:url('../brand/illustrations/route.jpg')"></div><div class="icap">Компас <span>· стратегия / маршрут</span></div></div>
+    <div><div class="img" style="background-image:url('../brand/illustrations/system.jpg')"></div><div class="icap">Механизм <span>· система</span></div></div>
+    <div><div class="img" style="background-image:url('../brand/illustrations/mastery.jpg')"></div><div class="icap">Бюст <span>· мастерство</span></div></div>
+    <div><div class="img" style="background-image:url('../brand/illustrations/growth.jpg')"></div><div class="icap">Дерево <span>· рост</span></div></div>
+  </div>
+</div>
+
+<!-- ПРИМЕНЁННЫЙ БЛОК -->
+<div class="sec">
+  <div class="sec__t">06 · Блок «текст + рендер» (кнопка с текстом в деле)</div>
+  <div class="block">
+    <div>
+      <div class="eyebrow">Принцип</div>
+      <h2 class="display" style="margin:26px 0 24px">Система,<br>а не вдохновение</h2>
+      <p class="lede" style="margin-bottom:34px">Команда уходит с сессии не с эмоцией, а с устройством: кто, что, когда и по какому правилу решает.</p>
+      <a class="btn btn--solid btn--arrow" style="max-width:250px">Обсудить сессию <span class="arr">›</span></a>
+    </div>
+    <div class="block__vis" style="background-image:url('../brand/illustrations/system.jpg')"></div>
+  </div>
+</div>
+
+<!-- СЛАЙД ПРЕЗЕНТАЦИИ -->
+<div class="sec">
+  <div class="sec__t">07 · Слайд презентации (обложка 16:9)</div>
+  <div class="slide">
+    <div class="slide__bg" style="background-image:url('../brand/illustrations/route.jpg')"></div>
+    <div class="slide__nav">
+      <div class="logo"><div class="logo__mono">АК</div><div><div class="logo__name" style="font-size:14px">Александр Кандеев</div><div class="logo__tag">Стратегические сессии</div></div></div>
+      <div style="font-family:var(--font-display);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--c-muted)">Стратегия роста · 2026</div>
+    </div>
+    <div class="slide__in">
+      <div class="eyebrow">Стратегическая сессия</div>
+      <h2 class="display" style="font-size:clamp(40px,5.2vw,72px);margin-top:22px">Стратегия -<br>это маршрут</h2>
+    </div>
+    <div class="slide__foot"><span>Александр Кандеев</span><span>01</span></div>
+  </div>
+</div>
+
+</body>
+</html>

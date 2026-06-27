@@ -1,0 +1,308 @@
+/* ============================================================
+   Дизайн-система Александра Кандеева - БАЗОВЫЙ CSS (веб)
+   Подключать после ../core/tokens.css.
+   Готовые компоненты в духе whitewill.ru: навбар, hero,
+   шаги, кейс, цифры, панель категорий, кнопки, печать.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Inter:wght@300;400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+body {
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-body);
+}
+
+/* --- Типографика --- */
+.display {
+  font-family: var(--font-display);
+  font-weight: var(--w-light);
+  text-transform: uppercase;
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+}
+/* Выделение в заголовке - НЕ по умолчанию. Только осознанно, классом .em.
+   Случайный <b>/<strong> в заголовке намеренно не утолщается. */
+.display b, .display strong { font-weight: inherit; }
+.em { font-weight: var(--w-medium); }
+.em.is-accent { color: var(--c-bronze); }
+
+h1.display { font-size: var(--fs-display-xl); }
+h2.display { font-size: var(--fs-display-l); }
+h3 {
+  font-family: var(--font-display);
+  font-weight: var(--w-regular);
+  font-size: var(--fs-h3);
+  letter-spacing: 0.01em;
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-weight: var(--w-medium);
+  font-size: var(--fs-label);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--c-accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+}
+.eyebrow::before { content: ""; width: 46px; height: 1px; background: var(--c-accent); }
+
+.lede { font-size: var(--fs-lede); color: var(--c-muted); font-weight: var(--w-light); }
+.muted { color: var(--c-muted); }
+.faint { color: var(--c-faint); }
+
+/* --- Раскладка --- */
+.section { padding: var(--section-y) var(--gutter); max-width: var(--maxw); margin: 0 auto; }
+.divider { height: 1px; background: var(--c-line); border: 0; }
+
+/* --- Навбар --- */
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 30px var(--gutter); }
+.logo { display: flex; align-items: center; gap: 16px; }
+.logo__mono {
+  width: 46px; height: 46px; border: 1px solid var(--c-ivory);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: var(--w-medium); font-size: 18px; letter-spacing: 0.04em;
+}
+.logo__name { font-family: var(--font-display); font-weight: var(--w-medium); font-size: 16px;
+  letter-spacing: 0.32em; text-transform: uppercase; line-height: 1; }
+.logo__tag { font-family: var(--font-display); font-weight: var(--w-light); font-size: 10.5px;
+  letter-spacing: 0.28em; text-transform: uppercase; color: var(--c-muted); margin-top: 6px; }
+.nav__right { display: flex; align-items: center; gap: 40px;
+  font-family: var(--font-display); font-weight: var(--w-regular); font-size: var(--fs-label);
+  letter-spacing: 0.16em; text-transform: uppercase; }
+
+/* --- Кнопки (снято с whitewill.ru: радиус 4px, .3s, налив акцентом) --- */
+.btn {
+  font-family: var(--font-display); font-weight: var(--w-medium);
+  font-size: var(--fs-label); letter-spacing: var(--ls-label); text-transform: uppercase;
+  padding: 17px 38px; border: 1px solid transparent; border-radius: var(--radius-sm); cursor: pointer;
+  text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 14px;
+  white-space: nowrap; line-height: 1; vertical-align: middle;
+  transition: background var(--dur) var(--ease-lux), color var(--dur) var(--ease-lux),
+              border-color var(--dur) var(--ease-lux);
+}
+/* Размеры */
+.btn--lg { padding: 21px 46px; font-size: 14px; }
+.btn--sm { padding: 13px 26px; font-size: 12px; }
+.btn--block { display: flex; width: 100%; }
+/* Солид: бронза → на ховере глубже */
+.btn--solid { background: var(--c-accent); color: var(--c-black); }
+.btn--solid:hover { background: var(--c-accent-hover); }
+/* Призрак: на ховере бордер загорается акцентом, заливается акцентом (приём WW) */
+.btn--ghost { background: transparent; color: var(--c-text); border-color: var(--c-line-strong); }
+.btn--ghost:hover { background: var(--c-accent); color: var(--c-black); border-color: var(--c-accent); }
+/* Кнопка-стрелка: стрелка идёт за текстом, на ховере «дышит». Без переноса. */
+.btn--arrow .arr { display: inline-block; transition: transform var(--dur) var(--ease-lux); }
+.btn--arrow:hover .arr { animation: arrow-move 0.9s var(--ease-lux) infinite; }
+
+/* Ссылка-стрелка: на ховере текст и черта уходят в акцент */
+.link {
+  font-family: var(--font-display); font-weight: var(--w-regular);
+  font-size: var(--fs-label); letter-spacing: var(--ls-label); text-transform: uppercase;
+  color: var(--c-text); text-decoration: none; display: inline-flex; align-items: center; gap: 13px;
+  transition: color var(--dur) var(--ease-lux), gap var(--dur) var(--ease-lux);
+}
+.link::after { content: ""; width: 32px; height: 1px; background: var(--c-accent); transition: width var(--dur) var(--ease-lux); }
+.link:hover { color: var(--c-accent); gap: 18px; }
+.link:hover::after { width: 44px; }
+
+/* --- Hero (фото на весь экран + заголовок снизу) --- */
+.hero { position: relative; min-height: 100vh; overflow: hidden; }
+.hero__bg { position: absolute; inset: 0; background-size: cover; background-position: 62% 16%; }
+.hero__bg::before { content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(13,13,13,0.92) 0%, rgba(13,13,13,0.55) 34%, rgba(13,13,13,0.15) 60%, rgba(13,13,13,0.5) 100%); }
+.hero__bg::after { content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(13,13,13,0.7) 0%, transparent 18%, transparent 58%, rgba(13,13,13,0.92) 100%); }
+.hero__nav { position: absolute; z-index: 6; top: 0; left: 0; right: 0; }
+.hero__title { position: absolute; z-index: 6; left: var(--gutter); bottom: 210px; max-width: 1000px; }
+.hero__lede { position: absolute; z-index: 6; right: var(--gutter); bottom: 226px; width: 360px; }
+
+/* --- Печать-медальон --- */
+.seal { position: relative; width: 128px; height: 128px; }
+.seal__center { position: absolute; inset: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center; }
+.seal__big { font-family: var(--font-display); font-weight: var(--w-medium); font-size: 30px; color: var(--c-bronze); line-height: 1; }
+.seal__cap { font-family: var(--font-display); font-weight: var(--w-regular); font-size: 9px;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-bronze); margin-top: 5px; }
+
+/* --- Панель категорий --- */
+.catbar { display: flex; background: rgba(13,13,13,0.55); backdrop-filter: blur(10px); border-top: 1px solid var(--c-line); }
+.catbar__item { flex: 1; text-align: center; padding: 30px 14px;
+  font-family: var(--font-display); font-weight: var(--w-regular); font-size: 13.5px;
+  letter-spacing: 0.13em; text-transform: uppercase; color: var(--c-ivory); }
+.catbar__item:not(:last-child) { border-right: 1px solid var(--c-line); }
+.catbar__item.is-active { background: rgba(191,158,119,0.14); }
+
+/* --- Шаги (нумерованные колонки) --- */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 4vw, 54px); }
+.step { border-top: 1px solid var(--c-line); padding-top: 30px; }
+.step__num { font-family: var(--font-display); font-weight: var(--w-light); font-size: 15px;
+  letter-spacing: 0.2em; color: var(--c-bronze); margin-bottom: 46px; }
+
+/* --- Кейс / цитата --- */
+.case { display: grid; grid-template-columns: 360px 1fr; gap: clamp(32px, 4vw, 64px);
+  align-items: center; background: var(--c-surface); border: 1px solid var(--c-line); padding: 60px 64px; }
+.case__photo { min-height: 420px; background-size: cover; background-position: center 22%; filter: grayscale(1) contrast(1.02); }
+.case__quote { font-family: var(--font-display); font-weight: var(--w-light);
+  font-size: clamp(24px, 2.4vw, 33px); line-height: 1.42; text-transform: none; }
+.case__quote b, .case__quote strong { font-weight: inherit; color: inherit; }
+.case__quote .em { font-weight: var(--w-regular); color: var(--c-bronze); }
+.case__by { margin-top: 40px; padding-top: 26px; border-top: 1px solid var(--c-line);
+  display: flex; gap: 14px; align-items: baseline;
+  font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.16em; font-size: var(--fs-label); }
+
+/* --- Полоса цифр --- */
+.stats { display: flex; border-top: 1px solid var(--c-line); border-bottom: 1px solid var(--c-line); }
+.stat { flex: 1; padding: 46px 44px 50px 0; }
+.stat:not(:last-child) { border-right: 1px solid var(--c-line); }
+.stat__n { font-family: var(--font-display); font-weight: var(--w-light); font-size: clamp(34px, 3.4vw, 46px); }
+.stat__n i { font-style: normal; color: var(--c-bronze); }
+.stat__t { font-size: var(--fs-caption); letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-muted); margin-top: 14px; }
+
+/* --- Изображения: фото, вырезанные объекты, рендеры, абстракция --- */
+/* Базовая медиа-область (фото или картинка), острые углы, без рамки */
+.figure { position: relative; overflow: hidden; background-size: cover; background-position: center; }
+.figure--bw { filter: grayscale(1) contrast(1.02); }      /* кейсы, архив */
+/* Вырезанный объект/рендер на прозрачном фоне (статуя, предмет, элемент) */
+.cutout { display: block; max-width: 100%; height: auto; }
+.cutout--glow { filter: drop-shadow(0 30px 60px rgba(0,0,0,0.5)); }
+/* Контейнер под абстрактный/SVG-визуал (когда фото не нужно) */
+.motif { position: relative; overflow: hidden; background: var(--c-near-black);
+  display: flex; align-items: center; justify-content: center; min-height: 420px; }
+.motif > svg { width: 100%; height: 100%; display: block; }
+/* Блок «текст + визуал» (визуал может быть фото ИЛИ рендер ИЛИ абстракция) */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 100px); align-items: center; }
+.split--narrow { grid-template-columns: 0.85fr 1fr; }
+
+/* --- Светлый регистр (полная инверсия: слоновая кость + тёмный текст) ---
+   Вешается на секцию. Бронзовый акцент остаётся прежним - связь регистров. */
+.invert {
+  background: var(--c-ivory-warm);
+  color: var(--c-black);
+  --c-bg: var(--c-ivory-warm);     /* фон секции и плоских блоков */
+  --c-surface: #FCFAF5;            /* приподнятые карточки на светлом */
+  --c-text: #0D0D0D;
+  --c-muted: rgba(13, 13, 13, 0.62);
+  --c-faint: rgba(13, 13, 13, 0.42);
+  --c-line: rgba(13, 13, 13, 0.14);
+  --c-line-strong: rgba(13, 13, 13, 0.26);
+}
+.invert .logo__mono { border-color: #0D0D0D; }
+.invert .catbar { background: rgba(255, 255, 255, 0.55); }
+.invert .catbar__item { color: var(--c-text); }
+
+/* --- Программы (карточки услуг) --- */
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--c-line); border: 1px solid var(--c-line); }
+.card { background: var(--c-bg); padding: 48px 40px 44px; display: flex; flex-direction: column; min-height: 380px; }
+.card__num { font-family: var(--font-display); font-weight: var(--w-light); font-size: 14px; letter-spacing: 0.2em; color: var(--c-bronze); margin-bottom: 40px; }
+.card h3 { margin-bottom: 18px; }
+.card__price { margin-top: auto; padding-top: 26px; font-family: var(--font-display); font-weight: var(--w-light); font-size: 22px; letter-spacing: 0.01em; }
+.card__price i { font-style: normal; color: var(--c-bronze); }
+
+/* --- Финальный CTA на фото --- */
+.cta-screen { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; }
+.cta-screen__bg { position: absolute; inset: 0; background-size: cover; background-position: center 18%; }
+.cta-screen__bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(13,13,13,0.9) 0%, rgba(13,13,13,0.55) 45%, rgba(13,13,13,0.25) 100%); }
+.cta-screen__in { position: relative; z-index: 2; padding: 0 var(--gutter); max-width: 920px; }
+
+/* ============================================================
+   ПЛАШКИ, ТЕГИ, ВЫНОСКИ - цвет не только на кнопках
+   ============================================================ */
+
+/* Локальные «установщики акцента»: меняют --c-accent для вложенных
+   компонентов (бейдж, выноска, кнопка) + задают цвет текста ПОВЕРХ цвета. */
+.acc-bronze     { --c-accent: #BF9E77; --c-accent-hover: #997650; --on-accent: #0D0D0D; }
+.acc-clay       { --c-accent: #B98E7B; --c-accent-hover: #8E604C; --on-accent: #0D0D0D; }
+.acc-sage       { --c-accent: #9AAF89; --c-accent-hover: #728562; --on-accent: #13210E; }
+.acc-eucalyptus { --c-accent: #4D726B; --c-accent-hover: #354E49; --on-accent: #F4F1EC; }
+.acc-navy       { --c-accent: #0E3361; --c-accent-hover: #082344; --on-accent: #F4F1EC; }
+.acc-amber      { --c-accent: #EB9444; --c-accent-hover: #B5701F; --on-accent: #0D0D0D; }
+:root { --on-accent: #0D0D0D; }   /* текст поверх бронзы по умолчанию */
+
+/* Тег / бейдж - приглушённая плашка (заливка акцентом 14%, текст акцентом) */
+.badge { display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-display); font-weight: var(--w-medium); font-size: 12px;
+  letter-spacing: 0.12em; text-transform: uppercase; padding: 7px 14px; border-radius: 999px;
+  background: color-mix(in srgb, var(--c-accent) 15%, transparent); color: var(--c-accent); }
+.badge .pip { width: 7px; height: 7px; border-radius: 50%; background: var(--c-accent); }
+/* Сплошной бейдж - заливка цветом, текст поверх */
+.badge--solid { background: var(--c-accent); color: var(--on-accent); }
+
+/* Выноска / плашка-блок - тонкий бордер + акцентная грань слева + лёгкий тон */
+.callout { border: 1px solid var(--c-line); border-left: 3px solid var(--c-accent);
+  background: color-mix(in srgb, var(--c-accent) 7%, transparent);
+  padding: 24px 28px; }
+.callout__t { font-family: var(--font-display); font-weight: var(--w-medium); font-size: 13px;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--c-accent); margin-bottom: 10px; }
+
+/* Цветной разделитель-полоса (тонкая, для ритма/секций) */
+.rule-accent { height: 2px; width: 56px; background: var(--c-accent); border: 0; }
+
+/* ============================================================
+   ВЗАИМОДЕЙСТВИЯ И ДВИЖЕНИЕ (снято с whitewill.ru)
+   ============================================================ */
+
+/* Keyframes */
+@keyframes arrow-move { 0%{transform:translate3d(.2em,0,0)} 50%{transform:translate3d(-.1em,0,0)} 100%{transform:translate3d(.2em,0,0)} }
+@keyframes fadeUp { 0%{transform:translate3d(0,1.4em,0);opacity:0} 50%{opacity:1} 100%{transform:translateZ(0);opacity:1} }
+@keyframes fadeRightUp { 0%{transform:translate3d(-3em,3em,0);opacity:0} 50%{opacity:1} 100%{transform:translateZ(0);opacity:1} }
+@keyframes dot-pulse { 0%{transform:scale(0)} 80%{transform:scale(1.2)} 90%{transform:scale(1.2)} 100%{opacity:0} }
+
+/* Фото из ч/б в цвет + лёгкий зум на ховере (приём WW) */
+.figure--reveal { filter: grayscale(1) contrast(1.02); transition: filter var(--dur-slow) var(--ease-lux), transform var(--dur-slow) var(--ease-lux); }
+.figure--reveal:hover { filter: grayscale(0) contrast(1); transform: scale(1.02); }
+
+/* Карточки и плитки - мягкий отклик на ховер */
+.card { transition: background var(--dur) var(--ease-lux); }
+.card:hover { background: var(--c-surface); }
+.catbar__item { transition: background var(--dur) var(--ease-lux), color var(--dur) var(--ease-lux); cursor: pointer; }
+.catbar__item:hover { background: rgba(191,158,119,0.10); color: var(--c-accent); }
+.nav__right span, .logo { transition: color var(--dur) var(--ease-lux); }
+
+/* Появление при скролле: вешаем .reveal, JS добавляет .is-in при входе в экран.
+   IntersectionObserver-сниппет - в components.md. Поддерживает задержку через --d. */
+.reveal { opacity: 0; will-change: transform, opacity; }
+.reveal.is-in { animation: fadeUp 0.8s var(--ease-lux) both; animation-delay: var(--d, 0s); }
+.reveal--side.is-in { animation-name: fadeRightUp; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal.is-in { opacity: 1; animation: none; }
+  .figure--reveal { filter: grayscale(0); }
+  .btn--arrow:hover .arr { animation: none; }
+}
+
+/* --- Формы (снято с whitewill.ru: 1px бордер, радиус 4px, фокус → акцент) --- */
+.field { display: block; margin-bottom: 18px; }
+.field__label { display: block; font-family: var(--font-display); font-weight: var(--w-medium);
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-muted); margin-bottom: 10px; }
+.input, .textarea {
+  width: 100%; font-family: var(--font-body); font-size: var(--fs-body); color: var(--c-text);
+  background: transparent; border: 1px solid var(--c-line-strong); border-radius: var(--radius-sm);
+  padding: 16px 18px; outline: none;
+  transition: border-color var(--dur) var(--ease-lux), background var(--dur) var(--ease-lux);
+}
+.textarea { min-height: 130px; resize: vertical; }
+.input::placeholder, .textarea::placeholder { color: var(--c-faint); }
+.input:hover, .textarea:hover { border-color: var(--c-muted); }
+.input:focus, .textarea:focus { border-color: var(--c-accent); background: rgba(191,158,119,0.04); }
+/* В светлом регистре поля темнеют бордером автоматически - через .invert переменные линий */
+
+/* --- Адаптив --- */
+@media (max-width: 860px) {
+  .steps { grid-template-columns: 1fr; }
+  .case { grid-template-columns: 1fr; }
+  .stats { flex-wrap: wrap; }
+  .stat { flex: 1 1 45%; }
+  .hero__lede { position: static; width: auto; margin-top: 24px; }
+  .hero__title { position: static; margin-top: 40px; }
+  .nav__right { gap: 18px; }
+  .catbar { flex-wrap: wrap; }
+}

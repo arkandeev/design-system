@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../core/tokens.css">
+<link rel="stylesheet" href="base.css">
+<style>
+  body { padding: 58px var(--gutter); }
+  .kicker { font-family: var(--font-display); font-weight: 500; font-size: 12px; letter-spacing: .24em;
+    text-transform: uppercase; color: var(--c-faint); margin: 0 0 18px; }
+  .grp { margin-bottom: 50px; }
+  .bgs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .bg { min-height: 168px; border: 1px solid var(--c-line); padding: 20px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .bg b { font-weight: 500; font-size: 14px; } .bg span { font-size: 12px; opacity: .65; margin-top: 4px; font-family: monospace; }
+  .row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .calls { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .themes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .tcard { border: 1px solid var(--c-line); padding: 34px 38px; background: var(--c-surface); }
+  .tcard h3 { margin: 16px 0 12px; }
+</style>
+</head>
+<body>
+
+<h2 class="display" style="font-size:40px;margin-bottom:8px">Цвет в деле</h2>
+<p class="muted" style="margin-bottom:46px">Где какой цвет: фоны, теги, выноски, темы. Как палитра взаимодействует - не только на кнопках.</p>
+
+<!-- ФОНЫ -->
+<div class="grp">
+  <div class="kicker">Фоны - где используются</div>
+  <div class="bgs">
+    <div class="bg" style="background:#0D0D0D"><b style="color:#F4F1EC">Чёрный</b><span style="color:#F4F1EC">основной · #0D0D0D</span></div>
+    <div class="bg" style="background:#15191F"><b style="color:#F4F1EC">Графит</b><span style="color:#F4F1EC">карточки · #15191F</span></div>
+    <div class="bg" style="background:#0C1B20"><b style="color:#F4F1EC">Хвойный</b><span style="color:#F4F1EC">глубокая секция · #0C1B20</span></div>
+    <div class="bg" style="background:#F0EAE3"><b style="color:#0D0D0D">Слоновая кость</b><span style="color:#0D0D0D">светлый блок · #F0EAE3</span></div>
+  </div>
+</div>
+
+<!-- ТЕГИ -->
+<div class="grp">
+  <div class="kicker">Теги и бейджи - приглушённая заливка (текст цветом)</div>
+  <div class="row" style="margin-bottom:14px">
+    <span class="badge acc-bronze"><span class="pip"></span>Бронза</span>
+    <span class="badge acc-clay"><span class="pip"></span>Глина</span>
+    <span class="badge acc-sage"><span class="pip"></span>Шалфей</span>
+    <span class="badge acc-eucalyptus"><span class="pip"></span>Эвкалипт</span>
+    <span class="badge acc-navy"><span class="pip"></span>Навигатор</span>
+    <span class="badge acc-amber"><span class="pip"></span>Амбра</span>
+  </div>
+  <div class="kicker" style="margin:24px 0 14px">Сплошные бейджи (текст поверх цвета)</div>
+  <div class="row">
+    <span class="badge badge--solid acc-bronze">Бронза</span>
+    <span class="badge badge--solid acc-clay">Глина</span>
+    <span class="badge badge--solid acc-sage">Шалфей</span>
+    <span class="badge badge--solid acc-eucalyptus">Эвкалипт</span>
+    <span class="badge badge--solid acc-navy">Навигатор</span>
+    <span class="badge badge--solid acc-amber">Амбра</span>
+  </div>
+</div>
+
+<!-- ВЫНОСКИ -->
+<div class="grp">
+  <div class="kicker">Выноски - плашки с акцентной гранью и лёгким тоном</div>
+  <div class="calls">
+    <div class="callout acc-eucalyptus"><div class="callout__t">Стратегия</div><p class="muted">Эвкалипт - для стратегических разделов и тем.</p></div>
+    <div class="callout acc-sage"><div class="callout__t">Рост</div><p class="muted">Шалфей - там, где речь про развитие и динамику.</p></div>
+    <div class="callout acc-amber"><div class="callout__t">Внимание</div><p class="muted">Амбра - акцент на важном, очень дозированно.</p></div>
+    <div class="callout acc-bronze"><div class="callout__t">Премиум</div><p class="muted">Бронза - базовый акцент, статус и действие.</p></div>
+  </div>
+</div>
+
+<!-- ТЕМЫ КАК БЛОКИ -->
+<div class="grp">
+  <div class="kicker">Темы как блоки - один класс красит весь блок</div>
+  <div class="themes">
+    <div class="tcard theme-bronze"><div class="eyebrow">Бронза</div><h3>Стратегическая сессия</h3><p class="muted" style="margin-bottom:22px">База. Тёплый премиум на графите.</p><div class="row" style="align-items:center"><span class="badge"><span class="pip"></span>Базовая</span><a class="btn btn--solid btn--sm">Выбрать</a></div></div>
+    <div class="tcard theme-sage"><div class="eyebrow">Шалфей</div><h3>Рост команды</h3><p class="muted" style="margin-bottom:22px">Спокойный зелёный регистр.</p><div class="row" style="align-items:center"><span class="badge"><span class="pip"></span>Серия</span><a class="btn btn--solid btn--sm">Выбрать</a></div></div>
+    <div class="tcard theme-emerald"><div class="eyebrow">Изумруд</div><h3>Динамика</h3><p class="muted" style="margin-bottom:22px">Глубокий эвкалипт на тёмно-зелёном.</p><div class="row" style="align-items:center"><span class="badge"><span class="pip"></span>Поток</span><a class="btn btn--solid btn--sm">Выбрать</a></div></div>
+    <div class="tcard invert acc-navy"><div class="eyebrow">Навигатор</div><h3>Диагностика</h3><p class="muted" style="margin-bottom:22px">Тёмно-синий лучше на светлом - статусно и строго.</p><div class="row" style="align-items:center"><span class="badge"><span class="pip"></span>Аудит</span><a class="btn btn--solid btn--sm">Выбрать</a></div></div>
+  </div>
+</div>
+
+</body>
+</html>

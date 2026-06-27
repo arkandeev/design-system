@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Александр Кандеев - Стратегические сессии</title>
+<!-- Дизайн-система: подключаем токены, затем базовый CSS -->
+<link rel="stylesheet" href="../core/tokens.css">
+<link rel="stylesheet" href="base.css">
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero__bg" style="background-image:url('../brand/sample-photos/77.jpg')"></div>
+
+  <nav class="nav hero__nav">
+    <div class="logo">
+      <div class="logo__mono">АК</div>
+      <div>
+        <div class="logo__name">Александр Кандеев</div>
+        <div class="logo__tag">Стратегические сессии</div>
+      </div>
+    </div>
+    <div class="nav__right">
+      <span>+7 495 000-00-00</span>
+      <span class="muted">Москва</span>
+    </div>
+  </nav>
+
+  <!-- Печать-медальон -->
+  <div style="position:absolute;z-index:6;left:var(--gutter);top:248px">
+    <svg width="128" height="128" viewBox="0 0 128 128">
+      <defs><path id="seal-circ" d="M64,64 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"/></defs>
+      <circle cx="64" cy="64" r="62" fill="none" stroke="#BF9E77" stroke-width="1"/>
+      <circle cx="64" cy="64" r="52" fill="none" stroke="#BF9E77" stroke-width="1" stroke-opacity=".5"/>
+      <text font-family="Montserrat" font-size="8.4" letter-spacing="2.4" fill="#BF9E77" font-weight="400">
+        <textPath href="#seal-circ" startOffset="0%">• 120+ СТРАТЕГИЧЕСКИХ СЕССИЙ • РОСТ КОМАНД •</textPath>
+      </text>
+    </svg>
+    <div class="seal__center"><div class="seal__big">15</div><div class="seal__cap">лет практики</div></div>
+  </div>
+
+  <div class="hero__title">
+    <h1 class="display">Стратегия,<br>за которую <b>отвечают</b></h1>
+  </div>
+
+  <div class="hero__lede">
+    <p class="lede">Веду команды первого круга к плану роста, под которым стоят подписи. 1-2 дня оффлайн - и в понедельник это уже в работе.</p>
+    <a href="#" class="link" style="margin-top:26px">Обсудить сессию</a>
+  </div>
+
+  <div class="catbar" style="position:absolute;left:0;right:0;bottom:0;z-index:6">
+    <div class="catbar__item is-active">Стратегическая сессия</div>
+    <div class="catbar__item">Динамика команды</div>
+    <div class="catbar__item">Сопровождение роста</div>
+    <div class="catbar__item">Диагностика</div>
+    <div class="catbar__item">Выступления</div>
+  </div>
+</header>
+
+<!-- ============ МЕТОД ============ -->
+<section class="section">
+  <div class="eyebrow">02 — Метод</div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin:30px 0 74px;flex-wrap:wrap;gap:30px">
+    <h2 class="display">Как устроена<br><b>сессия</b></h2>
+    <p class="lede" style="max-width:380px">Никаких игр ради игр. Только команда первого круга и только стратегия. Жёсткая рамка, за которой - результат.</p>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="step__num">01</div><h3>Подготовка</h3>
+      <p class="muted">Интервью с владельцем и командой. Снимаю контекст, цифры, конфликты. К сессии прихожу с гипотезами, а не с чистым листом.</p></div>
+    <div class="step"><div class="step__num">02</div><h3>Сессия</h3>
+      <p class="muted">1-2 дня оффлайн. Веду команду через стратегические развилки к решениям, под которыми они готовы поставить подпись.</p></div>
+    <div class="step"><div class="step__num">03</div><h3>План</h3>
+      <p class="muted">На выходе - конкретный план роста с ответственными и сроками. Не вдохновение, а то, что в понедельник идёт в работу.</p></div>
+  </div>
+</section>
+
+<!-- ============ КЕЙС ============ -->
+<section class="section" style="padding-top:0">
+  <div class="case">
+    <div class="case__photo" style="background-image:url('../brand/sample-photos/73.jpg')"></div>
+    <div>
+      <div class="case__quote">«Да нахера эта стратсессия?» - спросил он в начале. А в конце <b>команда впервые за три года договорилась, куда мы растём.</b></div>
+      <div class="case__by"><span>Динамика</span><span class="muted">Производство · сессия 1 из 3</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ЦИФРЫ ============ -->
+<section class="section" style="padding-top:0">
+  <div class="stats">
+    <div class="stat"><div class="stat__n">120<i>+</i></div><div class="stat__t">Проведённых сессий</div></div>
+    <div class="stat"><div class="stat__n">5М-5<i>млрд</i></div><div class="stat__t">Выручка клиентов</div></div>
+    <div class="stat"><div class="stat__n">1-2 <i>дня</i></div><div class="stat__t">Формат</div></div>
+    <div class="stat"><div class="stat__n">C-1</div><div class="stat__t">Только первый круг</div></div>
+  </div>
+</section>
+
+</body>
+</html>

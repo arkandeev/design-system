@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../core/tokens.css">
+<link rel="stylesheet" href="base.css">
+<style>
+  body { padding: 64px var(--gutter); }
+  .h-sys { font-family: var(--font-display); font-weight: 300; text-transform: uppercase;
+    font-size: 40px; letter-spacing: .02em; line-height: 1; }
+  .h-sub { color: var(--c-muted); margin-top: 14px; font-size: 16px; }
+  .status { display: inline-flex; gap: 10px; align-items: center; margin-top: 18px; font-size: 13px;
+    letter-spacing: .04em; color: var(--c-muted); }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--c-sage); display: inline-block; }
+  .sec { padding: 46px 0; border-top: 1px solid var(--c-line); }
+  .sec__t { font-family: var(--font-display); font-weight: 500; font-size: 12px; letter-spacing: .26em;
+    text-transform: uppercase; color: var(--c-faint); margin-bottom: 30px; }
+  .sw-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
+  .sw { }
+  .sw__c { height: 92px; border-radius: var(--radius-sm); border: 1px solid var(--c-line); }
+  .sw__n { font-size: 13px; margin-top: 12px; }
+  .sw__h { font-size: 12px; color: var(--c-muted); font-family: var(--font-mono, monospace); letter-spacing: .02em; margin-top: 3px; }
+  .chips { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+  .chip2 { display: flex; align-items: center; gap: 10px; padding: 10px 16px; border: 1px solid var(--c-line); border-radius: 999px; font-size: 13px; }
+  .chip2 i { width: 14px; height: 14px; border-radius: 50%; display: inline-block; }
+  .trow { display: grid; grid-template-columns: 200px 1fr; gap: 30px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--c-line); }
+  .trow:last-child { border-bottom: 0; }
+  .tlab b { display: block; font-size: 14px; }
+  .tlab span { display: block; font-size: 12px; color: var(--c-muted); margin-top: 4px; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; max-width: 720px; }
+  .cap { font-size: 12px; color: var(--c-muted); margin-bottom: 12px; }
+  .fh.btn--solid { background: var(--c-accent-hover); }
+  .fh.btn--ghost { background: var(--c-accent); color: var(--c-black); border-color: var(--c-accent); }
+  .fh.link { color: var(--c-accent); gap: 18px; } .fh.link::after { width: 44px; }
+  .fh.input { border-color: var(--c-accent); background: rgba(191,158,119,.04); }
+  .col2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+</style>
+</head>
+<body>
+
+<div class="h-sys">Дизайн-система</div>
+<div class="h-sub">Александр Кандеев · стратегические сессии · премиум-тёмный (якорь whitewill.ru)</div>
+<div class="status"><span class="dot"></span>Готово: палитра · типографика · кнопки · формы · движение · изображения · темы &nbsp;·&nbsp; Ждёт: логотип, лицензия Futura PT</div>
+
+<!-- ЦВЕТ -->
+<div class="sec">
+  <div class="sec__t">01 · Цвет</div>
+  <div class="sw-grid">
+    <div class="sw"><div class="sw__c" style="background:#0D0D0D"></div><div class="sw__n">Чёрный</div><div class="sw__h">#0D0D0D</div></div>
+    <div class="sw"><div class="sw__c" style="background:#000A0D"></div><div class="sw__n">Почти-чёрный</div><div class="sw__h">#000A0D</div></div>
+    <div class="sw"><div class="sw__c" style="background:#15191F"></div><div class="sw__n">Графит</div><div class="sw__h">#15191F</div></div>
+    <div class="sw"><div class="sw__c" style="background:#0C1B20"></div><div class="sw__n">Хвойный</div><div class="sw__h">#0C1B20</div></div>
+    <div class="sw"><div class="sw__c" style="background:#F4F1EC"></div><div class="sw__n">Слоновая кость</div><div class="sw__h">#F4F1EC</div></div>
+    <div class="sw"><div class="sw__c" style="background:#F0EAE3"></div><div class="sw__n">Тёплый крем</div><div class="sw__h">#F0EAE3</div></div>
+  </div>
+  <div class="sw-grid" style="margin-top:22px">
+    <div class="sw"><div class="sw__c" style="background:#BF9E77"></div><div class="sw__n">Бронза · акцент</div><div class="sw__h">#BF9E77</div></div>
+    <div class="sw"><div class="sw__c" style="background:#997650"></div><div class="sw__n">Бронза глубже</div><div class="sw__h">#997650</div></div>
+    <div class="sw"><div class="sw__c" style="background:#B98E7B"></div><div class="sw__n">Глина</div><div class="sw__h">#B98E7B</div></div>
+    <div class="sw"><div class="sw__c" style="background:#9AAF89"></div><div class="sw__n">Шалфей</div><div class="sw__h">#9AAF89</div></div>
+    <div class="sw"><div class="sw__c" style="background:#4D726B"></div><div class="sw__n">Эвкалипт</div><div class="sw__h">#4D726B</div></div>
+    <div class="sw"><div class="sw__c" style="background:#0E3361"></div><div class="sw__n">Навигатор</div><div class="sw__h">#0E3361</div></div>
+  </div>
+  <div class="chips">
+    <span style="font-size:12px;color:var(--c-faint);letter-spacing:.2em;text-transform:uppercase;align-self:center;margin-right:6px">Темы</span>
+    <span class="chip2"><i style="background:#BF9E77"></i>theme-bronze</span>
+    <span class="chip2"><i style="background:#4D726B"></i>theme-emerald</span>
+    <span class="chip2"><i style="background:#9AAF89"></i>theme-sage</span>
+    <span class="chip2"><i style="background:#0E3361"></i>theme-navy</span>
+  </div>
+</div>
+
+<!-- ТИПОГРАФИКА -->
+<div class="sec">
+  <div class="sec__t">02 · Типографика</div>
+  <div class="col2" style="margin-bottom:26px">
+    <div><div class="cap">Заголовки</div><div style="font-family:'Montserrat';font-weight:300;font-size:46px;text-transform:uppercase;letter-spacing:.01em">Montserrat</div><div style="color:var(--c-muted);font-size:13px;margin-top:8px">light 300 / medium 500 · прописные · апгрейд до Futura PT</div></div>
+    <div><div class="cap">Текст</div><div style="font-family:'Inter';font-weight:400;font-size:46px">Inter</div><div style="color:var(--c-muted);font-size:13px;margin-top:8px">300 / 400 / 500 · нормальный регистр</div></div>
+  </div>
+  <div class="trow"><div class="tlab"><b>Заголовок H1</b><span>Montserrat 300 · 44-104px</span></div><div class="display" style="font-size:52px">Стратегия</div></div>
+  <div class="trow"><div class="tlab"><b>Заголовок H2</b><span>Montserrat 300/500 · 32-56px</span></div><div class="display" style="font-size:36px">Как устроена сессия</div></div>
+  <div class="trow"><div class="tlab"><b>Заголовок H3</b><span>Montserrat 400 · 21-28px</span></div><h3 style="margin:0">Стратегическая сессия</h3></div>
+  <div class="trow"><div class="tlab"><b>Лид</b><span>Inter 300 · 16-19px</span></div><div class="lede" style="margin:0">Команды первого круга к плану роста, под которым стоят подписи.</div></div>
+  <div class="trow"><div class="tlab"><b>Текст</b><span>Inter 400 · 15-17px · 1.62</span></div><div style="margin:0;max-width:560px">Никаких игр ради игр. Только команда первого круга и только стратегия - то, что в понедельник идёт в работу.</div></div>
+  <div class="trow"><div class="tlab"><b>Подпись / навбар</b><span>Montserrat 500 · 13px · разрядка</span></div><div class="eyebrow" style="margin:0">Стратегические сессии</div></div>
+</div>
+
+<!-- КНОПКИ И ФОРМЫ -->
+<div class="sec">
+  <div class="sec__t">03 · Кнопки, ссылки, формы</div>
+  <div class="col2">
+    <div>
+      <div class="pair">
+        <div><div class="cap">Обычное</div>
+          <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a class="btn btn--solid">Оставить заявку</a><a class="btn btn--ghost">Подробнее</a></div>
+          <div style="margin-top:16px"><a class="btn btn--solid btn--arrow" style="max-width:240px">Обсудить сессию <span class="arr">›</span></a></div>
+          <div style="margin-top:18px"><a class="link">Как проходит</a></div>
+        </div>
+        <div><div class="cap">Наведение</div>
+          <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a class="btn btn--solid fh">Оставить заявку</a><a class="btn btn--ghost fh">Подробнее</a></div>
+          <div style="margin-top:16px"><a class="btn btn--solid btn--arrow fh" style="max-width:240px">Обсудить сессию <span class="arr">›</span></a></div>
+          <div style="margin-top:18px"><a class="link fh">Как проходит</a></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="cap">Форма (поле «телефон» в фокусе → бронза)</div>
+      <label class="field"><span class="field__label">Имя</span><input class="input" value="Александр"></label>
+      <label class="field"><span class="field__label">Телефон</span><input class="input fh" value="+7 495 000-00-00"></label>
+      <button class="btn btn--solid" style="width:100%">Отправить заявку</button>
+    </div>
+  </div>
+</div>
+
+<!-- ЛОГОТИП -->
+<div class="sec">
+  <div class="sec__t">04 · Логотип (пока знак не пришёл)</div>
+  <div style="display:flex;gap:60px;align-items:center;flex-wrap:wrap">
+    <div class="logo"><div class="logo__mono">АК</div><div><div class="logo__name">Александр Кандеев</div><div class="logo__tag">Стратегические сессии</div></div></div>
+    <svg width="120" height="120" viewBox="0 0 128 128">
+      <defs><path id="sc" d="M64,64 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"/></defs>
+      <circle cx="64" cy="64" r="62" fill="none" stroke="#BF9E77" stroke-width="1"/>
+      <circle cx="64" cy="64" r="52" fill="none" stroke="#BF9E77" stroke-width="1" stroke-opacity=".5"/>
+      <text font-family="Montserrat" font-size="8" letter-spacing="2.2" fill="#BF9E77"><textPath href="#sc">• 120+ СТРАТЕГИЧЕСКИХ СЕССИЙ • РОСТ КОМАНД •</textPath></text>
+      <text x="64" y="60" text-anchor="middle" font-family="Montserrat" font-weight="500" font-size="26" fill="#BF9E77">15</text>
+      <text x="64" y="76" text-anchor="middle" font-family="Montserrat" font-size="8" letter-spacing="2" fill="#BF9E77">ЛЕТ</text>
+    </svg>
+  </div>
+</div>
+
+</body>
+</html>

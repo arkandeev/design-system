@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Александр Кандеев - Стратегические сессии</title>
+<link rel="stylesheet" href="../core/tokens.css">
+<link rel="stylesheet" href="base.css">
+<style>
+  /* локальные доводки для демо-лендинга */
+  .screen { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+  /* фикс высот для статичного рендера всех экранов одним снимком */
+  .hero, .cta-screen, .screen { min-height: 880px !important; height: 880px; }
+  .about { display: grid; grid-template-columns: 0.85fr 1fr; gap: clamp(40px, 6vw, 100px); align-items: center; }
+  .about__photo { aspect-ratio: 3/4; background-size: cover; background-position: center; filter: grayscale(1); }
+</style>
+</head>
+<body>
+
+<!-- ============ ЭКРАН 1 · HERO ============ -->
+<header class="hero">
+  <div class="hero__bg" style="background-image:url('../brand/sample-photos/77.jpg')"></div>
+  <nav class="nav hero__nav">
+    <div class="logo">
+      <div class="logo__mono">АК</div>
+      <div><div class="logo__name">Александр Кандеев</div><div class="logo__tag">Стратегические сессии</div></div>
+    </div>
+    <div class="nav__right"><span>+7 495 000-00-00</span><span class="muted">Москва</span></div>
+  </nav>
+  <div style="position:absolute;z-index:6;left:var(--gutter);top:248px">
+    <svg width="128" height="128" viewBox="0 0 128 128">
+      <defs><path id="seal-circ" d="M64,64 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"/></defs>
+      <circle cx="64" cy="64" r="62" fill="none" stroke="#BF9E77" stroke-width="1"/>
+      <circle cx="64" cy="64" r="52" fill="none" stroke="#BF9E77" stroke-width="1" stroke-opacity=".5"/>
+      <text font-family="Montserrat" font-size="8.4" letter-spacing="2.4" fill="#BF9E77" font-weight="400">
+        <textPath href="#seal-circ" startOffset="0%">• 120+ СТРАТЕГИЧЕСКИХ СЕССИЙ • РОСТ КОМАНД •</textPath>
+      </text>
+    </svg>
+    <div class="seal__center"><div class="seal__big">15</div><div class="seal__cap">лет практики</div></div>
+  </div>
+  <div class="hero__title"><h1 class="display">Стратегия,<br>за которую <b>отвечают</b></h1></div>
+  <div class="hero__lede">
+    <p class="lede">Веду команды первого круга к плану роста, под которым стоят подписи. 1-2 дня оффлайн - и в понедельник это уже в работе.</p>
+    <a href="#" class="link" style="margin-top:26px">Обсудить сессию</a>
+  </div>
+  <div class="catbar" style="position:absolute;left:0;right:0;bottom:0;z-index:6">
+    <div class="catbar__item is-active">Стратегическая сессия</div>
+    <div class="catbar__item">Динамика команды</div>
+    <div class="catbar__item">Сопровождение роста</div>
+    <div class="catbar__item">Диагностика</div>
+    <div class="catbar__item">Выступления</div>
+  </div>
+</header>
+
+<!-- ============ ЭКРАН 2 · О СЕБЕ (светлый регистр) ============ -->
+<section class="invert screen">
+  <div class="section about" style="width:100%">
+    <div class="about__photo" style="background-image:url('../brand/sample-photos/71.jpg')"></div>
+    <div>
+      <div class="eyebrow">Кто ведёт</div>
+      <h2 class="display" style="margin:28px 0 30px">Александр<br><b>Кандеев</b></h2>
+      <p class="lede" style="margin-bottom:24px">15 лет провожу стратегические сессии для команд с выручкой от 5 млн в месяц до 5 млрд в год. Не консультант с презентацией - модератор, который доводит команду до решения, за которое она берёт ответственность.</p>
+      <p class="muted" style="margin-bottom:48px">Без воды и игр ради игр. Только первый круг руководителей, только стратегия, только то, что в понедельник идёт в работу.</p>
+      <div class="stats">
+        <div class="stat"><div class="stat__n">120<i>+</i></div><div class="stat__t">Сессий</div></div>
+        <div class="stat"><div class="stat__n">15 <i>лет</i></div><div class="stat__t">Практики</div></div>
+        <div class="stat"><div class="stat__n">5млрд</div><div class="stat__t">Потолок клиента</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ЭКРАН 3 · ПРОГРАММЫ ============ -->
+<section class="screen">
+  <div class="section" style="width:100%">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:60px;flex-wrap:wrap;gap:24px">
+      <div><div class="eyebrow">03 — Программы</div><h2 class="display" style="margin-top:28px">Что мы<br><b>делаем</b></h2></div>
+      <p class="lede" style="max-width:360px">Формат под задачу команды - от разовой сессии до сопровождения роста из квартала в квартал.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card__num">01</div>
+        <h3>Стратегическая сессия</h3>
+        <p class="muted">1-2 дня оффлайн с первым кругом. На выходе - план роста с ответственными и сроками.</p>
+        <div class="card__price">от <i>650 000 ₽</i></div>
+      </div>
+      <div class="card">
+        <div class="card__num">02</div>
+        <h3>Динамика команды</h3>
+        <p class="muted">Серия сессий из квартала в квартал. Команда не буксует и не повторяется - движок видит, что уже сделано.</p>
+        <div class="card__price">по запросу</div>
+      </div>
+      <div class="card">
+        <div class="card__num">03</div>
+        <h3>Диагностика</h3>
+        <p class="muted">Интервью с владельцем и командой до сессии. Снимаю контекст, цифры и конфликты, прихожу с гипотезами.</p>
+        <div class="card__price">от <i>150 000 ₽</i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ЭКРАН 4 · ФИНАЛ / CTA ============ -->
+<section class="cta-screen">
+  <div class="cta-screen__bg" style="background-image:url('../brand/sample-photos/105.jpg')"></div>
+  <div class="cta-screen__in">
+    <div class="eyebrow">Следующий шаг</div>
+    <h2 class="display" style="margin:30px 0 28px">Обсудим<br>вашу <b>сессию?</b></h2>
+    <p class="lede" style="max-width:480px;margin-bottom:44px">Расскажите про команду и задачу - вернусь с тем, как пройдёт сессия и какой будет результат.</p>
+    <div style="display:flex;align-items:center;gap:30px;flex-wrap:wrap">
+      <a href="#" class="btn btn--solid">Оставить заявку</a>
+      <a href="#" class="link">+7 495 000-00-00</a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

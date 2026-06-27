@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../core/tokens.css">
+<link rel="stylesheet" href="base.css">
+<style>
+  body { padding: 60px var(--gutter); }
+  .h-sys { font-family: var(--font-display); font-weight: 300; text-transform: uppercase; font-size: 34px; letter-spacing: .02em; }
+  .h-sub { color: var(--c-muted); margin-top: 12px; font-size: 15px; }
+  .grid { display: grid; grid-template-columns: 150px 1fr 1fr; gap: 28px 40px; align-items: center;
+    margin-top: 40px; }
+  .ghead { font-family: var(--font-display); font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--c-faint); }
+  .rlab b { display: block; font-size: 14px; } .rlab span { display: block; font-size: 12px; color: var(--c-muted); margin-top: 3px; }
+  .cell { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .div { grid-column: 1 / -1; height: 1px; background: var(--c-line); }
+  /* имитация :hover */
+  .fh.btn--solid { background: var(--c-accent-hover); }
+  .fh.btn--ghost { background: var(--c-accent); color: var(--c-black); border-color: var(--c-accent); }
+  .fh.link { color: var(--c-accent); gap: 18px; } .fh.link::after { width: 44px; }
+  .panel { margin-top: 48px; background: var(--c-ivory-warm); border-radius: var(--radius-sm); padding: 40px 44px; }
+</style>
+</head>
+<body>
+
+<div class="h-sys">Кнопки</div>
+<div class="h-sub">Текст в одну строку, острые углы 4px, прописные с разрядкой, заливка акцентом на ховере</div>
+
+<div class="grid">
+  <div class="ghead"></div><div class="ghead">Обычное</div><div class="ghead">Наведение</div>
+
+  <div class="rlab"><b>Основная</b><span>главное действие</span></div>
+  <div class="cell"><a class="btn btn--solid">Обсудить сессию</a></div>
+  <div class="cell"><a class="btn btn--solid fh">Обсудить сессию</a></div>
+  <div class="div"></div>
+
+  <div class="rlab"><b>Призрак</b><span>вторичное действие</span></div>
+  <div class="cell"><a class="btn btn--ghost">Программа сессии</a></div>
+  <div class="cell"><a class="btn btn--ghost fh">Программа сессии</a></div>
+  <div class="div"></div>
+
+  <div class="rlab"><b>Со стрелкой</b><span>стрелка «дышит» на ховере</span></div>
+  <div class="cell"><a class="btn btn--solid btn--arrow">Оставить заявку <span class="arr">›</span></a></div>
+  <div class="cell"><a class="btn btn--solid btn--arrow fh">Оставить заявку <span class="arr">›</span></a></div>
+  <div class="div"></div>
+
+  <div class="rlab"><b>Ссылка-стрелка</b><span>текстовое действие</span></div>
+  <div class="cell"><a class="link">Как проходит сессия</a></div>
+  <div class="cell"><a class="link fh">Как проходит сессия</a></div>
+  <div class="div"></div>
+
+  <div class="rlab"><b>Размеры</b><span>sm · md · lg</span></div>
+  <div class="cell" style="grid-column:2 / -1">
+    <a class="btn btn--solid btn--sm">Записаться</a>
+    <a class="btn btn--solid">Записаться</a>
+    <a class="btn btn--solid btn--lg">Записаться</a>
+  </div>
+  <div class="div"></div>
+
+  <div class="rlab"><b>На всю ширину</b><span>в формах и карточках</span></div>
+  <div class="cell" style="grid-column:2 / -1; max-width:520px"><a class="btn btn--solid btn--block">Отправить заявку</a></div>
+</div>
+
+<!-- светлый регистр -->
+<div class="panel invert">
+  <div class="ghead" style="margin-bottom:22px">На светлом фоне (тот же компонент)</div>
+  <div class="cell" style="display:flex;gap:18px">
+    <a class="btn btn--solid">Обсудить сессию</a>
+    <a class="btn btn--ghost">Программа сессии</a>
+    <a class="btn btn--solid btn--arrow">Оставить заявку <span class="arr">›</span></a>
+    <a class="link" style="margin-left:6px">Как проходит</a>
+  </div>
+</div>
+
+</body>
+</html>
